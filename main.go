@@ -1,19 +1,16 @@
 package main
 
 import (
-	"github.com/gin-gonic/gin"
+	"flag"
 	"log"
+	"web/app/root"
 )
 
-var RootRouter *gin.Engine
-
-func init() {
-	RootRouter = gin.Default()
-}
+var listen = flag.String("listen", ":9000", "The api server listen on.")
 
 func main() {
-	err := RootRouter.Run() // listen and serve on 0.0.0.0:8080
-	if err != nil {
+	flag.Parse()
+	if err := root.Router.Run(*listen); err != nil {
 		log.Fatal(err)
 	}
 }

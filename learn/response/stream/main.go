@@ -27,7 +27,7 @@ func main() {
 	})
 
 	router.GET("/file-stream", func(c *gin.Context) {
-		file := "main.go"
+		file := "group.go"
 		reader, err := os.Open(file)
 		defer reader.Close()
 		if err != nil {
